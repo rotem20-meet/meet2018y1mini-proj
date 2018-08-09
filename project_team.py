@@ -5,14 +5,41 @@ turtle.tracer(1,0) #This helps the turtle move more smoothly
 
 SIZE_X=800
 SIZE_Y=500
-turtle.setup(SIZE_X, SIZE_Y) #Curious? It's the turtle window  
+turtle.setup(1000,1000) #Curious? It's the turtle window  
                              #size. 
 turtle.penup()
 
 SQUARE_SIZE = 20
 START_LENGTH = 6
+border=turtle.clone()
+border.penup()
+border.goto(0,270)
+border.pendown()
+border.goto(410,270)
+border.goto(-410,270)
+border.left(90)
+border.goto(-410,-270)
+border.left(90)
+border.goto(410,-270)
+border.left(90)
+border.goto(410,270)
+border.penup()
+border.goto(-50,400)
+border.pendown()
+border.write('snake game!!!',font=('Arial',32,'normal'))
+border.hideturtle()
+border.penup()
+border.goto(-50,-450)
+border.pendown()
+score=0
+global (score)
+border.write(score,font=('Arial',32,'normal'))
 
-#Initialize lists
+
+
+             
+
+#Initialize listsbor
 pos_list = []
 stamp_list = []
 food_pos = []
@@ -150,18 +177,27 @@ def move_snake():
         food.clearstamp(food_stamps[food_ind]) #Remove eaten food
         food_pos.pop(food_ind) #Remove eaten food position
         food_stamps.pop(food_ind) #Remove eaten food stamp
-        print("Reached")      
-        print("You have eaten the food!")     
+        print("Reached")
+        score=score+1
+        
+
+    
+    else:
+        old_stamp = stamp_list.pop(0)
+        snake.clearstamp(old_stamp)
+        pos_list.pop(0)
+        print("You have eaten the food!")
+        
     my_pos=snake.pos() 
     pos_list.append(my_pos)
     new_stamp = snake.stamp()
     stamp_list.append(new_stamp)
+
+
     ######## SPECIAL PLACE - Remember it for Part 5
     #pop zeroth element in pos_list to get rid of last the last 
     #piece of the tail
-    old_stamp = stamp_list.pop(0)
-    snake.clearstamp(old_stamp)
-    pos_list.pop(0)
+   
     #if new_pos
     if len(food_stamps) <= 6 :
         make_food()
@@ -208,7 +244,11 @@ def make_food():
     food_pos.append(food.pos())
     food_stamps.append(food.stamp())
 
- if snake==food_pos:
+  
+        
+        
+     
+     
     
            
 
