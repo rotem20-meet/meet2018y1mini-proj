@@ -162,8 +162,14 @@ def move_snake():
     old_stamp = stamp_list.pop(0)
     snake.clearstamp(old_stamp)
     pos_list.pop(0)
+    #if new_pos
+    if len(food_stamps) <= 6 :
+        make_food()
     turtle.ontimer(move_snake,TIME_STEP)
-    
+    print(snake.pos())
+    print(pos_list)
+    if my_pos in pos_list[0:len(pos_list)-1]:
+        quit()
 
 
 turtle.register_shape("trash.gif") #Add trash picture
@@ -183,29 +189,30 @@ for this_food_pos in food_pos :
     stamp_ID = food.stamp()
     food_stamps.append(stamp_ID)
 
+
     
             
 
 
 
 def make_food():
-    #The screen positions go from -SIZE/2 to +SIZE/2
-    #But we need to make food pieces only appear on game squares
-    #So we cut up the game board into multiples of SQUARE_SIZE.
     min_x=-int(SIZE_X/2/SQUARE_SIZE)+1
     max_x=int(SIZE_X/2/SQUARE_SIZE)-1
     min_y=-int(SIZE_Y/2/SQUARE_SIZE)-1
     max_y=int(SIZE_Y/2/SQUARE_SIZE)+1
     
-    #Pick a position that is a random multiple of SQUARE_SIZE
-    food_x = random.randint(min_x,max_x)*SQUARE_SIZE
-    food_y = random.randint(min_y,max_y)*SQUARE_SIZE
+    food_x = random.randint(min_x,max_y)*SQUARE_SIZE
+    food_y = random.randint(min_x,max_y)*SQUARE_SIZE
+    
+    food.goto(food_x,food_y)
+    food_pos.append(food.pos())
+    food_stamps.append(food.stamp())
 
-        ##1.WRITE YOUR CODE HERE: Make the food turtle go to the randomly-generated
-        ##                        position 
-        ##2.WRITE YOUR CODE HERE: Add the food turtle's position to the food positions list
-        ##3.WRITE YOUR CODE HERE: Add the food turtle's stamp to the food stamps list
+ if snake==food_pos:
+    
+           
 
+    
 print('moving snake')
 move_snake()
 
