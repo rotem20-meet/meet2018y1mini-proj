@@ -31,9 +31,11 @@ border.hideturtle()
 border.penup()
 border.goto(-50,-450)
 border.pendown()
-score=0
-global (score)
-border.write(score,font=('Arial',32,'normal'))
+
+
+
+
+
 
 
 
@@ -177,8 +179,8 @@ def move_snake():
         food.clearstamp(food_stamps[food_ind]) #Remove eaten food
         food_pos.pop(food_ind) #Remove eaten food position
         food_stamps.pop(food_ind) #Remove eaten food stamp
-        print("Reached")
-        score=score+1
+        
+        
         
 
     
@@ -202,8 +204,6 @@ def move_snake():
     if len(food_stamps) <= 6 :
         make_food()
     turtle.ontimer(move_snake,TIME_STEP)
-    print(snake.pos())
-    print(pos_list)
     if my_pos in pos_list[0:len(pos_list)-1]:
         quit()
 
