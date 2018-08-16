@@ -1,3 +1,6 @@
+
+
+
 import turtle
 import random #We'll need this later in the lab
 
@@ -257,7 +260,7 @@ print('moving snake')
 move_snake()
 
 
-
-
+#min_x,max_y
+#min_x,max_y
 
    
